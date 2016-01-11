@@ -33,10 +33,35 @@
 
         <div class="inputs">
 
-            <input type="text" placeholder="تاریخ" name="q1_date" id="q1_date" required="required"
-                   onfocus="this.placeholder = ''" onblur="this.placeholder ='تاریخ'"/>
-            <input type="button" id="button" name="send" value="جست و جو"/>
+            <input type="text" placeholder="date: 2016-10-10" name="q1_date" id="q1_date" required="required"
+                   onfocus="this.placeholder = ''" onblur="this.placeholder='date: 2016-10-10'"/>
+            <input type="button" id="button" name="send" value="search" onclick="send_query()"/>
             <input type="text" name="q1_date_out" id="q1_date_out"/>
+
+
+            <script text="text/javascript">
+
+                function synchronousAjax(source) {
+
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.open("GET", source, false);
+                    xmlhttp.send("");
+
+                    if (xmlhttp.status == 200) {
+                        return xmlhttp.responseXML;
+                    }
+
+                }
+
+                function send_query() {
+                    var to_send = document.getElementById("q1_date").value;
+                    var xml = synchronousAjax("../php/q1_date.php?q1_date=" + to_send);
+                    var to_show = xml.documentElement.getElementsByTagName("num")[0].firstChild.nodeValue;
+                    document.getElementById("q1_date_out").value = to_show;
+                }
+
+
+            </script>
 
         </div>
 

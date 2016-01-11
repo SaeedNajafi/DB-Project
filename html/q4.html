@@ -25,18 +25,31 @@
     <form id="q">
 
         <div class="header">
-            <h3>نام تیم هایی که در هر بازی بیش از ۲۰ حرکت امتیاز آور داشته اند</h3>
+            <h3>لیست بازی های یک زمان خاص به همراه بهترین مدافعان هر بازی</h3>
         </div>
 
         <div class="sep"></div>
 
         <div class="inputs">
 
-            <input type="button" id="button" name="send" value="send" onclick="send_query()"/>
 
-            <input type="text" disabled="true" value="index" name="index" class="index"/>
+            <input type="text" placeholder="date from: 2016-10-10" name="q4_date_from" id="q4_date_from"
+                   required="required"
+                   onfocus="this.placeholder = ''" onblur="this.placeholder ='date from: 2016-10-10'"/>
 
-            <input type="text" disabled="true" value="team_name" name="team_name" class="name"/>
+
+            <input type="text" placeholder="date to: 2016-10-13" name="q4_date_to" id="q4_date_to" required="required"
+                   onfocus="this.placeholder = ''" onblur="this.placeholder ='date to: 2016-10-13'"/>
+
+
+            <input type="button" id="button" name="send" value="search" onclick="send_query()"/>
+
+
+            <input type="text" disabled="true" value="index" name="index" class="q4_index"/>
+
+            <input type="text" disabled="true" value="player_name" name="player_name" class="q4_name"/>
+
+            <input type="text" disabled="true" value="match_id" name="match_id" class="q4_id"/>
 
 
         </div>
@@ -64,10 +77,14 @@
 
             function send_query() {
 
+                var to_send1 = document.getElementById("q4_date_from").value;
+                var to_send2 = document.getElementById("q4_date_to").value;
 
-                var xml = synchronousAjax("../php/q8.php");
+                var xml = synchronousAjax("../php/q4.php?q4_date_from=" + to_send1 + "&q4_date_to=" + to_send2);
                 var to_show_index = xml.documentElement.getElementsByTagName("index");
-                var to_show_team_name = xml.documentElement.getElementsByTagName("team_name");
+                var to_show_player_name = xml.documentElement.getElementsByTagName("player_name");
+                var to_show_match_id = xml.documentElement.getElementsByTagName("match_id");
+
                 document.getElementsByClassName("inputs")[1].innerHTML = "";
 
                 for (var i = 0; i < to_show_index.length; i++) {
@@ -81,7 +98,7 @@
                     att1.value = "true";
                     input_element1.setAttributeNode(att1);
                     att1 = document.createAttribute("class");
-                    att1.value = "out_index";
+                    att1.value = "out_q4_index";
                     input_element1.setAttributeNode(att1);
                     input_element1.value = to_show_index[i].firstChild.nodeValue;
 
@@ -95,21 +112,33 @@
                     att2.value = "true";
                     input_element2.setAttributeNode(att2);
                     att2 = document.createAttribute("class");
-                    att2.value = "out_name";
+                    att2.value = "out_q4_name";
                     input_element2.setAttributeNode(att2);
-                    input_element2.value = to_show_team_name[i].firstChild.nodeValue;
+                    input_element2.value = to_show_player_name[i].firstChild.nodeValue;
 
+
+                    var input_element3 = document.createElement("input");
+                    var att3;
+                    att3 = document.createAttribute("type");
+                    att3.value = "text";
+                    input_element3.setAttributeNode(att3);
+                    att3 = document.createAttribute("disabled");
+                    att3.value = "true";
+                    input_element3.setAttributeNode(att3);
+                    att3 = document.createAttribute("class");
+                    att3.value = "out_q4_id";
+                    input_element3.setAttributeNode(att3);
+                    input_element3.value = to_show_match_id[i].firstChild.nodeValue;
 
                     document.getElementsByClassName("inputs")[1].appendChild(input_element1);
                     document.getElementsByClassName("inputs")[1].appendChild(input_element2);
-
+                    document.getElementsByClassName("inputs")[1].appendChild(input_element3);
 
                 }
 
             }
 
         </script>
-
 
     </form>
 

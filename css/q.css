@@ -142,6 +142,61 @@ input:-moz-placeholder {
     color: #044C6C;
 }
 
+#q .inputs input[class=q4_index] {
+    width: 15%;
+    float: right;
+    margin-right: 4%;
+    margin-left: 0;
+    box-shadow: 0px 0px 0px 1px #044C6C, inset 0px 1px 1px #044C6C, 0px 1px 1px #044C6C;
+    color: #044C6C;
+}
+
+#q .inputs input[class=q4_name] {
+    width: 45%;
+    float: right;
+    margin-right: 4%;
+    margin-left: 0;
+    box-shadow: 0px 0px 0px 1px #044C6C, inset 0px 1px 1px #044C6C, 0px 1px 1px #044C6C;
+    color: #044C6C;
+}
+
+#q .inputs input[class=q4_id] {
+    width: 24%;
+    float: right;
+    margin-right: 4%;
+    margin-left: 0;
+    box-shadow: 0px 0px 0px 1px #044C6C, inset 0px 1px 1px #044C6C, 0px 1px 1px #044C6C;
+    color: #044C6C;
+}
+
+#q .inputs input[class=out_q4_index] {
+    width: 15%;
+    float: right;
+    margin-right: 4%;
+    margin-left: 0;
+    box-shadow: 0px 0px 0px 1px #ecfafa, inset 0px 1px 1px #ecfafa, 0px 1px 1px #ecfafa;
+    color: #044C6C;
+}
+
+#q .inputs input[class=out_q4_name] {
+    width: 45%;
+    float: right;
+    margin-right: 4%;
+    margin-left: 0;
+    box-shadow: 0px 0px 0px 1px #ecfafa, inset 0px 1px 1px #ecfafa, 0px 1px 1px #ecfafa;
+    color: #044C6C;
+}
+
+#q .inputs input[class=out_q4_id] {
+    width: 24%;
+    float: right;
+    margin-right: 4%;
+    margin-left: 0;
+    box-shadow: 0px 0px 0px 1px #ecfafa, inset 0px 1px 1px #ecfafa, 0px 1px 1px #ecfafa;
+    color: #044C6C;
+}
+
+
 #q .inputs input[class=out_q2_index] {
     width: 11%;
     float: right;
@@ -151,7 +206,7 @@ input:-moz-placeholder {
     color: #044C6C;
 }
 
-#q .inputs input[class=out_q2_name] {
+#q .inputs input[class=out_q2_player_name] {
     width: 23%;
     float: right;
     margin-right: 4%;
@@ -159,6 +214,17 @@ input:-moz-placeholder {
     box-shadow: 0px 0px 0px 1px #ecfafa, inset 0px 1px 1px #ecfafa, 0px 1px 1px #ecfafa;
     color: #044C6C;
 }
+
+#q .inputs input[class=out_q2_team_name] {
+    width: 23%;
+    float: right;
+    margin-right: 4%;
+    margin-left: 0;
+    box-shadow: 0px 0px 0px 1px #ecfafa, inset 0px 1px 1px #ecfafa, 0px 1px 1px #ecfafa;
+    color: #044C6C;
+}
+
+
 
 #q .inputs input[class=out_q2_date] {
     width: 23%;

@@ -32,43 +32,125 @@
 
         <div class="inputs">
 
-            <input type="text" placeholder="تاریخ" name="q2_date" id="q2_date" required="required"
-                   onfocus="this.placeholder = ''" onblur="this.placeholder ='تاریخ'"/>
+            <input type="text" placeholder="date: 2016-10-10" name="q2_date" id="q2_date" required="required"
+                   onfocus="this.placeholder = ''" onblur="this.placeholder ='date: 2016-10-10'"/>
 
-            <input type="button" id="button" name="send" value="جست و جو"/>
+            <input type="button" id="button" name="send" value="search" onclick="send_query()"/>
 
-            <input type="text" disabled="true" value="ردیف" name="index" class="q2_index"/>
+            <input type="text" disabled="true" value="index" name="index" class="q2_index"/>
 
-            <input type="text" disabled="true" value="نام بازیکن" name="player_name" class="q2_name"/>
+            <input type="text" disabled="true" value="player_name" name="player_name" class="q2_name"/>
 
-            <input type="text" disabled="true" value="تاریخ تولد" name="birth_date" class="q2_date"/>
+            <input type="text" disabled="true" value="player_birth_date" name="birth_date" class="q2_date"/>
 
-            <input type="text" disabled="true" value="نام تیم" name="team_name" class="q2_name"/>
-
-
-            <input type="text" disabled="true" value="1" name="out_index" class="out_q2_index"/>
-
-            <input type="text" disabled="true" value="محمودی" name="out_player_name" class="out_q2_name"/>
-
-            <input type="text" disabled="true" value="۱۳۹۲/۰۱/۰۱" name="out_birth_date" class="out_q2_date"/>
-
-            <input type="text" disabled="true" value="ایران" name="out_team_name" class="out_q2_name"/>
-
-
-            <input type="text" disabled="true" value="2" name="out_index" class="out_q2_index"/>
-
-            <input type="text" disabled="true" value="محمودی" name="out_player_name" class="out_q2_name"/>
-
-            <input type="text" disabled="true" value="۱۳۹۲/۰۱/۰۱" name="out_birth_date" class="out_q2_date"/>
-
-            <input type="text" disabled="true" value="ایران" name="out_team_name" class="out_q2_name"/>
+            <input type="text" disabled="true" value="team_name" name="team_name" class="q2_name"/>
 
 
         </div>
 
+        <div class="inputs">
+
+
+        </div>
+
+
+        <script text="text/javascript">
+
+            function synchronousAjax(source) {
+
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET", source, false);
+                xmlhttp.send("");
+
+                if (xmlhttp.status == 200) {
+                    return xmlhttp.responseXML;
+                }
+
+            }
+
+            function send_query() {
+
+                var to_send = document.getElementById("q2_date").value;
+                var xml = synchronousAjax("../php/q2.php?q2_date=" + to_send);
+                var to_show_index = xml.documentElement.getElementsByTagName("index");
+                var to_show_player_name = xml.documentElement.getElementsByTagName("player_name");
+                var to_show_player_birth_date = xml.documentElement.getElementsByTagName("player_birth_date");
+                var to_show_team_name = xml.documentElement.getElementsByTagName("team_name");
+                document.getElementsByClassName("inputs")[1].innerHTML = "";
+
+                for (var i = 0; i < to_show_index.length; i++) {
+
+                    var input_element1 = document.createElement("input");
+                    var att1;
+                    att1 = document.createAttribute("type");
+                    att1.value = "text";
+                    input_element1.setAttributeNode(att1);
+                    att1 = document.createAttribute("disabled");
+                    att1.value = "true";
+                    input_element1.setAttributeNode(att1);
+                    att1 = document.createAttribute("class");
+                    att1.value = "out_q2_index";
+                    input_element1.setAttributeNode(att1);
+                    input_element1.value = to_show_index[i].firstChild.nodeValue;
+
+
+                    var input_element2 = document.createElement("input");
+                    var att2;
+                    att2 = document.createAttribute("type");
+                    att2.value = "text";
+                    input_element2.setAttributeNode(att2);
+                    att2 = document.createAttribute("disabled");
+                    att2.value = "true";
+                    input_element2.setAttributeNode(att2);
+                    att2 = document.createAttribute("class");
+                    att2.value = "out_q2_player_name";
+                    input_element2.setAttributeNode(att2);
+                    input_element2.value = to_show_player_name[i].firstChild.nodeValue;
+
+
+                    var input_element3 = document.createElement("input");
+                    var att3;
+                    att3 = document.createAttribute("type");
+                    att3.value = "text";
+                    input_element3.setAttributeNode(att3);
+                    att3 = document.createAttribute("disabled");
+                    att3.value = "true";
+                    input_element3.setAttributeNode(att3);
+                    att3 = document.createAttribute("class");
+                    att3.value = "out_q2_date";
+                    input_element3.setAttributeNode(att3);
+                    input_element3.value = to_show_player_birth_date[i].firstChild.nodeValue;
+
+
+                    var input_element4 = document.createElement("input");
+                    var att4;
+                    att4 = document.createAttribute("type");
+                    att4.value = "text";
+                    input_element4.setAttributeNode(att4);
+                    att4 = document.createAttribute("disabled");
+                    att4.value = "true";
+                    input_element4.setAttributeNode(att4);
+                    att4 = document.createAttribute("class");
+                    att4.value = "out_q2_team_name";
+                    input_element4.setAttributeNode(att4);
+                    input_element4.value = to_show_team_name[i].firstChild.nodeValue;
+
+                    document.getElementsByClassName("inputs")[1].appendChild(input_element1);
+                    document.getElementsByClassName("inputs")[1].appendChild(input_element2);
+                    document.getElementsByClassName("inputs")[1].appendChild(input_element3);
+                    document.getElementsByClassName("inputs")[1].appendChild(input_element4);
+
+
+                }
+
+            }
+
+        </script>
+
     </form>
 
 </div>
+
 
 </body>
 

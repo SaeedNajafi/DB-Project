@@ -7,15 +7,16 @@
  * Time: 6:59 PM
  */
 
-$dbhost = 'uskkf9b78c90.snjf.koding.io';
+$dbhost = '127.0.0.1';
 $dbuser = 'root';
-$dbpassword = 'root';
+$dbpassword = 'saeednjf1372';
 $dbname = 'dbproject';
 
 $db = mysqli_connect($dbhost, $dbuser, $dbpassword,$dbname);
 
 if (mysqli_connect_errno())
 {
+
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
 
 }
