@@ -1,25 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" href="../css/q.css" type="text/css"/>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
-
-    <script type="text/javascript">
-        $(window).load(function () {
-            $(".loading").delay(1000).fadeOut(1);
-        });
-    </script>
-
-</head>
-
-<body>
-
-<div class="loading">
-
-</div>
-
 <div class="container">
 
     <form id="q">
@@ -42,7 +20,7 @@
                    onfocus="this.placeholder = ''" onblur="this.placeholder ='date to: 2016-10-13'"/>
 
 
-            <input type="button" id="button" name="send" value="search" onclick="send_query()"/>
+            <input type="button" id="button" name="send" value="search" onclick="send4_query()"/>
 
 
             <input type="text" disabled="true" value="index" name="index" class="q4_index"/>
@@ -61,90 +39,6 @@
         </div>
 
 
-        <script text="text/javascript">
-
-            function synchronousAjax(source) {
-
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("GET", source, false);
-                xmlhttp.send("");
-
-                if (xmlhttp.status == 200) {
-                    return xmlhttp.responseXML;
-                }
-
-            }
-
-            function send_query() {
-
-                var to_send1 = document.getElementById("q4_date_from").value;
-                var to_send2 = document.getElementById("q4_date_to").value;
-
-                var xml = synchronousAjax("../php/q4.php?q4_date_from=" + to_send1 + "&q4_date_to=" + to_send2);
-                var to_show_index = xml.documentElement.getElementsByTagName("index");
-                var to_show_player_name = xml.documentElement.getElementsByTagName("player_name");
-                var to_show_match_id = xml.documentElement.getElementsByTagName("match_id");
-
-                document.getElementsByClassName("inputs")[1].innerHTML = "";
-
-                for (var i = 0; i < to_show_index.length; i++) {
-
-                    var input_element1 = document.createElement("input");
-                    var att1;
-                    att1 = document.createAttribute("type");
-                    att1.value = "text";
-                    input_element1.setAttributeNode(att1);
-                    att1 = document.createAttribute("disabled");
-                    att1.value = "true";
-                    input_element1.setAttributeNode(att1);
-                    att1 = document.createAttribute("class");
-                    att1.value = "out_q4_index";
-                    input_element1.setAttributeNode(att1);
-                    input_element1.value = to_show_index[i].firstChild.nodeValue;
-
-
-                    var input_element2 = document.createElement("input");
-                    var att2;
-                    att2 = document.createAttribute("type");
-                    att2.value = "text";
-                    input_element2.setAttributeNode(att2);
-                    att2 = document.createAttribute("disabled");
-                    att2.value = "true";
-                    input_element2.setAttributeNode(att2);
-                    att2 = document.createAttribute("class");
-                    att2.value = "out_q4_name";
-                    input_element2.setAttributeNode(att2);
-                    input_element2.value = to_show_player_name[i].firstChild.nodeValue;
-
-
-                    var input_element3 = document.createElement("input");
-                    var att3;
-                    att3 = document.createAttribute("type");
-                    att3.value = "text";
-                    input_element3.setAttributeNode(att3);
-                    att3 = document.createAttribute("disabled");
-                    att3.value = "true";
-                    input_element3.setAttributeNode(att3);
-                    att3 = document.createAttribute("class");
-                    att3.value = "out_q4_id";
-                    input_element3.setAttributeNode(att3);
-                    input_element3.value = to_show_match_id[i].firstChild.nodeValue;
-
-                    document.getElementsByClassName("inputs")[1].appendChild(input_element1);
-                    document.getElementsByClassName("inputs")[1].appendChild(input_element2);
-                    document.getElementsByClassName("inputs")[1].appendChild(input_element3);
-
-                }
-
-            }
-
-        </script>
-
     </form>
 
 </div>
-
-</body>
-
-</html>
-​

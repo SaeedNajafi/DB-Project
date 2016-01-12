@@ -101,7 +101,7 @@ create procedure query_5()
 begin
 
 	call update_teams_final_scores();
-	select * from team;
+	select * from team order by won_matches DESC, score DESC, set_ratio DESC, point_ratio DESC;
 end//
 
 

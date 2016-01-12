@@ -1,25 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" href="../css/q.css" type="text/css"/>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
-
-    <script type="text/javascript">
-        $(window).load(function () {
-            $(".loading").delay(1000).fadeOut(1);
-        });
-    </script>
-
-</head>
-
-<body>
-
-<div class="loading">
-
-</div>
-
 <div class="container">
 
     <form id="q">
@@ -34,7 +12,7 @@
 
             <input type="text" placeholder="name: Marjan" name="q3_player_name" id="q3_player_name" required="required"
                    onfocus="this.placeholder = ''" onblur="this.placeholder ='name: Marjan'"/>
-            <input type="button" id="button" name="send" value="search" onclick="send_query()"/>
+            <input type="button" id="button" name="send" value="search" onclick="send3_query()"/>
 
             <input type="text" disabled="true" value="index" name="index" class="index"/>
 
@@ -50,74 +28,6 @@
         </div>
 
 
-        <script text="text/javascript">
-
-            function synchronousAjax(source) {
-
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("GET", source, false);
-                xmlhttp.send("");
-
-                if (xmlhttp.status == 200) {
-                    return xmlhttp.responseXML;
-                }
-
-            }
-
-            function send_query() {
-
-                var to_send = document.getElementById("q3_player_name").value;
-                var xml = synchronousAjax("../php/q3.php?q3_player_name=" + to_send);
-                var to_show_index = xml.documentElement.getElementsByTagName("index");
-                var to_show_referee_name = xml.documentElement.getElementsByTagName("referee_name");
-                document.getElementsByClassName("inputs")[1].innerHTML = "";
-
-                for (var i = 0; i < to_show_index.length; i++) {
-
-                    var input_element1 = document.createElement("input");
-                    var att1;
-                    att1 = document.createAttribute("type");
-                    att1.value = "text";
-                    input_element1.setAttributeNode(att1);
-                    att1 = document.createAttribute("disabled");
-                    att1.value = "true";
-                    input_element1.setAttributeNode(att1);
-                    att1 = document.createAttribute("class");
-                    att1.value = "out_index";
-                    input_element1.setAttributeNode(att1);
-                    input_element1.value = to_show_index[i].firstChild.nodeValue;
-
-
-                    var input_element2 = document.createElement("input");
-                    var att2;
-                    att2 = document.createAttribute("type");
-                    att2.value = "text";
-                    input_element2.setAttributeNode(att2);
-                    att2 = document.createAttribute("disabled");
-                    att2.value = "true";
-                    input_element2.setAttributeNode(att2);
-                    att2 = document.createAttribute("class");
-                    att2.value = "out_name";
-                    input_element2.setAttributeNode(att2);
-                    input_element2.value = to_show_referee_name[i].firstChild.nodeValue;
-
-
-                    document.getElementsByClassName("inputs")[1].appendChild(input_element1);
-                    document.getElementsByClassName("inputs")[1].appendChild(input_element2);
-
-
-                }
-
-            }
-
-        </script>
-
-
     </form>
 
 </div>
-
-</body>
-
-</html>
-​

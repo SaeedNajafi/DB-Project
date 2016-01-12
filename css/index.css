@@ -1,3 +1,56 @@
+
+#outer_div {
+
+    position: relative;
+    width: 1050px;
+    height: 150px;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    border-color: #ecfafa;
+    border-style: solid;
+    border-width: 2px;
+    font-family: Sans;
+
+}
+
+#outer_div h3 {
+
+    text-align: center;
+    color: #044C6C;
+    margin-bottom: 50px;
+}
+
+#outer_div span {
+    position: relative;
+    left: 100px;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    color: #ecfafa;
+
+}
+
+#outer_div span:hover {
+
+    color: #044C6C;
+    cursor: pointer;
+
+}
+
+#inner_div {
+
+    width: 1050px;
+    margin: auto;
+    border-color: #ecfafa;
+    border-top-style: solid;
+    border-top-width: 2px;
+    magin-top: 10px;
+    padding-top: 20px;
+
+}
+
+
 @CHARSET "UTF-8";
 
 @font-face {
@@ -9,6 +62,7 @@
 }
 
 .loading {
+
     position: fixed;
     left: 0px;
     top: 0px;
@@ -16,16 +70,29 @@
     height: 100%;
     z-index: 9999;
     background: url("../images/loading.gif") 50% 50% no-repeat rgb(255, 255, 255);
+
 }
 
 .container {
+
     width: 50%;
     height: 50%;
     margin: auto;
     font-family: 'BNazanin';
+
+}
+
+.q5_container {
+
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    font-size: 16px;
+
 }
 
 #q {
+
     padding: 0px 25px 25px;
     background: #fff;
     box-shadow: 0px 0px 0px 1px #ecfafa,
@@ -35,11 +102,14 @@
     border-radius: 5px;
     display: table;
     position: static;
+
 }
 
 #q .header {
+
     margin-bottom: 20px;
     text-align: center;
+
 }
 
 #q .header h3 {
