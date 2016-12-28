@@ -1,4 +1,4 @@
 # DB-Project
 
-Database for a volleball league
+Database for a volleyball league
 
